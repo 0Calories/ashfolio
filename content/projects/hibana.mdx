@@ -1,0 +1,49 @@
+---
+title: Hibana — Gamified Habit Tracker
+description: A gamified habit tracker that uses fire metaphors to make building habits engaging. Built with Next.js 16, React 19, Supabase, and Framer Motion.
+date: '2025-06-01'
+tags: ['Next.js', 'React', 'Supabase', 'Tailwind CSS', 'Framer Motion']
+image: /images/projects/hibana.png
+github: https://github.com/ash/hibana
+featured: true
+published: true
+---
+
+## Overview
+
+Hibana (火花, "spark" in Japanese) is a gamified habit tracker that transforms daily routines into an engaging experience through fire metaphors. Users create "flames" (habits), allocate daily "fuel" (time budgets), track sessions, and "seal" (complete) them with celebration animations.
+
+## The Problem
+
+Traditional habit trackers are boring. They rely on streaks and simple checkboxes that don't create emotional investment. I wanted to build something that makes the act of tracking habits feel rewarding in itself.
+
+## Technical Highlights
+
+### Architecture
+
+- **Server Components by default** with client components only where interactivity is needed
+- **Data Access Layer pattern** — consolidated fetch functions that verify auth once and run parallel queries
+- **Server Actions for mutations** with `revalidatePath()` after writes
+- **Row-Level Security** on all Supabase tables
+
+### Flame State Machine
+
+Each flame transitions through states: `untended → burning → paused → sealing → sealed`. The state machine drives both the UI (particle effects, colors, available actions) and the data model.
+
+### Particle System
+
+The signature visual element — floating ember particles that respond to flame state. Built with Framer Motion using deterministic seeded randomness to avoid hydration mismatches between server and client renders.
+
+### Design System
+
+OKLCH color space throughout, with a warm palette of ambers, golds, and deep navy backgrounds. The theme system uses CSS custom properties mapped through Tailwind CSS 4's `@theme inline` directive.
+
+## Stack
+
+- Next.js 16 (App Router, React 19, React Compiler)
+- TypeScript 5 (strict mode)
+- Supabase (PostgreSQL + Auth + RLS)
+- shadcn/ui + Radix UI + Tailwind CSS 4
+- Framer Motion
+- React Hook Form + Zod
+- next-intl (English + Japanese)

@@ -1,21 +1,42 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import Navbar from "@/components/Navbar";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import type { Metadata } from 'next';
+import './globals.css';
+import { Footer } from '@/components/layout/Footer';
+import { Header } from '@/components/layout/Header';
+import { ThemeProvider } from '@/components/theme-provider';
+import { siteConfig } from '@/data/site';
+import { fontDisplay, fontMono, fontSans } from '@/lib/fonts';
+import { jsonLdPerson, jsonLdWebsite } from '@/lib/metadata';
+import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: "Ash - Fullstack Software Engineer",
-  description: "Portfolio of Ash, a fullstack software engineer specializing in React, TypeScript, and modern web technologies",
+  metadataBase: new URL(
+    process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : 'http://localhost:3000',
+  ),
+  title: {
+    default: siteConfig.title,
+    template: `%s — ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -24,12 +45,38 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(fontDisplay.variable, fontSans.variable, fontMono.variable)}
+    >
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="flex min-h-dvh flex-col antialiased"
+        suppressHydrationWarning
       >
-        <Navbar />
-        {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([jsonLdWebsite(), jsonLdPerson()]),
+          }}
+        />
+        <a href="#main" className="skip-to-content">
+          Skip to content
+        </a>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <main id="main" className="flex-1">
+            {children}
+          </main>
+          <Footer />
+        </ThemeProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

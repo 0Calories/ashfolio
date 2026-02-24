@@ -1,0 +1,76 @@
+---
+title: Building Hibana — A Gamified Habit Tracker
+description: Lessons learned from building a gamified habit tracker with Next.js 16, Supabase, and Framer Motion.
+date: '2025-07-15'
+tags: ['Next.js', 'React', 'Supabase', 'Architecture']
+image: /images/blog/hibana-architecture.png
+published: true
+---
+
+## Why Another Habit Tracker?
+
+The habit tracking space is crowded, but most apps share the same problem: they're boring. Streaks and checkboxes don't create the emotional investment needed to build lasting habits.
+
+Hibana takes a different approach. By wrapping habits in fire metaphors — flames, fuel, sealing — the mundane act of tracking becomes something you actually want to do.
+
+## Architecture Decisions
+
+### Server Components First
+
+With Next.js 16 and React 19, server components are the default. I leaned into this hard:
+
+```tsx
+// Data fetching happens directly in the component
+export default async function FlamesPage() {
+  const data = await getFlamesPageData();
+  return <FlameGrid flames={data.flames} />;
+}
+```
+
+Client components are reserved for interactivity — the flame state machine, particle effects, and form inputs.
+
+### The Data Access Layer
+
+Instead of scattered queries, each page has a single data access function that verifies auth once and runs parallel queries:
+
+```tsx
+export async function getFlamesPageData() {
+  const supabase = await createClientWithAuth();
+
+  const [flames, schedule, sessions] = await Promise.all([
+    supabase.from('flames').select('*'),
+    supabase.from('flame_schedules').select('*'),
+    supabase.from('flame_sessions').select('*').eq('is_completed', false),
+  ]);
+
+  return { flames: flames.data, schedule: schedule.data, sessions: sessions.data };
+}
+```
+
+### Deterministic Randomness
+
+The particle system uses seeded random generation to avoid hydration mismatches:
+
+```tsx
+const SEED = 420;
+const HASH_PRIME = 9973;
+
+function generateHash(index: number, seed = SEED): number {
+  return (seed * (index + 1) * HASH_PRIME) % 10000;
+}
+```
+
+Same input always produces the same output — server and client agree on particle positions.
+
+## Lessons Learned
+
+1. **OKLCH is the future of CSS color.** Perceptually uniform, great for generating palettes.
+2. **Server Actions are great for mutations** but don't use them for reads.
+3. **Framer Motion's `AnimatePresence`** is magical for exit animations but requires careful key management.
+4. **shadcn/ui + Radix** give you accessibility for free. Worth the investment.
+
+## What's Next
+
+- Push notifications for habit reminders
+- Social features — share sealed flames
+- Mobile app with React Native

@@ -1,0 +1,69 @@
+---
+title: Why I Use OKLCH for Every Project Now
+description: A practical guide to using OKLCH color space in modern CSS with Tailwind CSS 4.
+date: '2025-08-10'
+tags: ['CSS', 'Tailwind CSS', 'Design']
+published: true
+---
+
+## The Problem with HSL
+
+HSL looks intuitive — hue, saturation, lightness. But it lies about perceptual uniformity. A yellow at 50% lightness looks much brighter than a blue at 50% lightness.
+
+This makes building consistent color palettes painful. You end up tweaking individual values by eye instead of relying on the math.
+
+## Enter OKLCH
+
+OKLCH (Oklab Lightness, Chroma, Hue) is a perceptually uniform color space. This means:
+
+- **L=0.5** looks equally "medium" regardless of hue
+- **Consistent chroma** across hues at the same lightness
+- **Smooth gradients** without muddy midpoints
+
+## Using OKLCH in Tailwind CSS 4
+
+Tailwind CSS 4 supports OKLCH natively in CSS custom properties:
+
+```css
+:root {
+  --primary: oklch(0.75 0.18 75);
+  --background: oklch(0.14 0.02 260);
+}
+
+.dark {
+  --primary: oklch(0.75 0.18 75);
+  --background: oklch(0.14 0.02 260);
+}
+```
+
+The `@theme inline` directive maps these to Tailwind utilities:
+
+```css
+@theme inline {
+  --color-primary: var(--primary);
+  --color-background: var(--background);
+}
+```
+
+Now `bg-primary` and `bg-background` just work — in both light and dark modes.
+
+## Building a Palette
+
+The key insight: keep the **lightness** consistent within a shade level, and only vary **chroma** and **hue** between colors.
+
+```css
+/* All 500-level shades at L=0.65-0.75 */
+--color-ember-500: oklch(0.75 0.18 55);
+--color-gold-500: oklch(0.75 0.18 75);
+--color-teal-500: oklch(0.65 0.14 185);
+--color-rose-500: oklch(0.65 0.20 0);
+```
+
+They look equally "vibrant" next to each other — no more bright yellow drowning out muted blue.
+
+## Practical Tips
+
+1. **Start with lightness.** Dark backgrounds: L=0.12-0.20. Light backgrounds: L=0.95-0.98. Body text: L=0.15 (light mode) or L=0.95 (dark mode).
+2. **Chroma controls saturation.** 0.00 = gray, 0.20+ = vivid. Most UI uses 0.01-0.03 for backgrounds.
+3. **Hue is the fun part.** 0-60 = warm (red-orange), 60-120 = yellow-green, 120-240 = cool (green-blue), 240-360 = purple-red.
+4. **Test both themes.** Colors that work on dark backgrounds may need lower lightness on light backgrounds for contrast.
