@@ -15,6 +15,7 @@ export function FeaturedProjects() {
       <ScrollReveal>
         <div className="flex items-end justify-between">
           <div>
+            <div className="mb-4 h-0.5 w-8 rounded-full bg-indigo-400" />
             <h2 className="text-3xl font-bold">Featured Projects</h2>
             <p className="mt-2 text-muted-foreground">
               Things I&apos;ve built recently.

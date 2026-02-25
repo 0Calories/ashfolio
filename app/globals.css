@@ -6,9 +6,7 @@
 
 @theme inline {
   /* Fonts */
-  --font-sans: var(--font-sans);
   --font-display: var(--font-display);
-  --font-mono: var(--font-mono);
 
   /* Theme color mappings */
   --color-background: var(--background);
@@ -74,7 +72,7 @@
   --card-foreground: oklch(0.93 0.005 280);
   --popover: oklch(0.17 0.02 280);
   --popover-foreground: oklch(0.93 0.005 280);
-  --primary: oklch(0.592 0.249 0.584);
+  --primary: oklch(0.75 0.14 200);
   --primary-foreground: oklch(0.98 0.005 0);
   --secondary: oklch(0.22 0.025 280);
   --secondary-foreground: oklch(0.93 0.005 280);
@@ -85,8 +83,8 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.592 0.249 0.584);
-  --chart-1: oklch(0.592 0.249 0.584);
+  --ring: oklch(0.75 0.14 200);
+  --chart-1: oklch(0.75 0.14 200);
   --chart-2: oklch(0.75 0.14 200);
   --chart-3: oklch(0.7 0.18 290);
   --chart-4: oklch(0.8 0.12 80);
@@ -127,7 +125,7 @@
 
 /* ─── Animated gradient border ─── */
 @property --border-angle {
-  syntax: '<angle>';
+  syntax: "<angle>";
   initial-value: 0deg;
   inherits: false;
 }
@@ -136,6 +134,11 @@
   to {
     --border-angle: 360deg;
   }
+}
+
+/* ─── Text glow ─── */
+.text-glow-primary {
+  text-shadow: 0 0 40px oklch(0.75 0.14 200 / 0.4);
 }
 
 /* ─── Skip to content ─── */

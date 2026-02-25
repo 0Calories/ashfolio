@@ -14,7 +14,7 @@ const skillBadgeVariants = cva(
       },
       proficiency: {
         expert: 'font-semibold',
-        proficient: 'font-medium',
+        proficient: '',
         familiar: 'font-normal opacity-80',
       },
     },

@@ -59,7 +59,7 @@ export function TableOfContents() {
                 'block py-1 transition-colors hover:text-foreground',
                 heading.level === 3 && 'pl-4',
                 activeId === heading.id
-                  ? 'font-medium text-primary'
+                  ? ' text-primary'
                   : 'text-muted-foreground',
               )}
             >

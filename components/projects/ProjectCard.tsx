@@ -22,7 +22,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     >
       <Link
         href={`/projects/${slug}`}
-        className="flex flex-col overflow-hidden rounded-xl border border-border bg-card ring-1 ring-foreground/5 transition-shadow hover:shadow-lg"
+        className="relative flex flex-col overflow-hidden rounded-xl border border-border bg-card ring-1 ring-foreground/5 transition-all hover:border-primary/30 hover:shadow-[0_0_24px_-6px_oklch(0.75_0.14_200_/_0.15)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-foreground/[0.06] before:to-transparent"
       >
         {frontmatter.image && (
           <div className="relative aspect-video overflow-hidden bg-muted">
@@ -30,7 +30,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               src={frontmatter.image}
               alt={frontmatter.title}
               fill
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
           </div>
         )}
@@ -46,7 +46,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <Badge
                 key={tag}
                 variant="secondary"
-                className="font-mono text-[0.65rem]"
+                className="font-mono text-xs"
               >
                 {tag}
               </Badge>

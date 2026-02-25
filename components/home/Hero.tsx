@@ -26,39 +26,50 @@ export function Hero() {
           variants={container}
           initial="hidden"
           animate="show"
-          className="relative z-10"
+          className="relative z-10 text-center"
         >
+          {/* Subtle radial glow behind heading */}
+          <div
+            className="pointer-events-none absolute top-0 left-1/2 -z-10 h-64 w-full max-w-2xl -translate-x-1/2 -translate-y-1/4"
+            style={{
+              background:
+                'radial-gradient(ellipse at 50% 50%, oklch(0.75 0.14 200 / 0.07), transparent 70%)',
+            }}
+            aria-hidden
+          />
+
           <motion.p
             variants={item}
-            className="text-sm font-medium tracking-wide text-primary uppercase"
+            className="text-sm  tracking-widest text-muted-foreground "
           >
             Fullstack Software Engineer
           </motion.p>
 
           <motion.h1
             variants={item}
-            className="mt-4 max-w-3xl text-5xl leading-[1.1] font-bold tracking-tight sm:text-6xl lg:text-7xl"
+            className="mx-auto mt-4 max-w-3xl text-5xl leading-[1.1] font-extrabold tracking-tight sm:text-6xl lg:text-7xl"
           >
-            Hi, I&apos;m <span className="text-primary">Ash</span>
+            Hi, I&apos;m{' '}
+            <span className="text-glow-primary text-primary">Ash</span>
           </motion.h1>
 
           <motion.p
             variants={item}
-            className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
+            className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
           >
             I build scalable web applications with a focus on peformance and
-            code quality. At{' '}
-            <span className="font-medium text-primary">Sentry</span>, I spent
-            over 3.5 years shipping features for an open-source SaaS loved and
-            used by over
-            <span className="font-medium text-primary"> 4M developers</span> and{' '}
-            <span className="font-medium text-primary">
-              100K+ organizations
-            </span>{' '}
+            code quality. At <span className=" text-foreground">Sentry</span>, I
+            spent over 3.5 years shipping features for an open-source SaaS loved
+            and used by over
+            <span className=" text-foreground"> 4M developers</span> and{' '}
+            <span className=" text-foreground">100K+ organizations</span>{' '}
             worldwide.
           </motion.p>
 
-          <motion.div variants={item} className="mt-8 flex flex-wrap gap-4">
+          <motion.div
+            variants={item}
+            className="mt-8 flex flex-wrap justify-center gap-4"
+          >
             <Button asChild size="lg">
               <Link href="/projects">
                 View my work

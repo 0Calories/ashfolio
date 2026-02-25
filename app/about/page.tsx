@@ -47,16 +47,15 @@ export default function AboutPage() {
           <p>
             I&apos;m a fullstack software engineer with 4.5 years of
             professional experience building developer tools at scale. Based in{' '}
-            <span className="font-medium text-foreground">Toronto, Canada</span>
-            .
+            <span className=" text-foreground">Toronto, Canada</span>.
           </p>
           <p>
             Most recently, I was a core contributor to{' '}
-            <span className="font-medium text-foreground">
+            <span className=" text-foreground">
               Sentry&apos;s open-source platform
             </span>
             , serving 100K+ organizations and millions of developers. I authored{' '}
-            <span className="font-medium text-foreground">
+            <span className=" text-foreground">
               @sentry/babel-plugin-component-annotate
             </span>
             , a Babel plugin that sees 4.6M+ weekly downloads on NPM.
@@ -70,9 +69,9 @@ export default function AboutPage() {
           </p>
           <p>
             Right now, I&apos;m building{' '}
-            <span className="font-medium text-foreground">Hibana</span> — a
-            gamified productivity platform that leverages behavioral psychology
-            to help users build lasting habits.
+            <span className=" text-foreground">Hibana</span> — a gamified
+            productivity platform that leverages behavioral psychology to help
+            users build lasting habits.
           </p>
         </div>
       </ScrollReveal>

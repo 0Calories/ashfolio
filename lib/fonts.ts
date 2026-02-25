@@ -1,23 +1,8 @@
-import {
-  Bricolage_Grotesque,
-  Instrument_Sans,
-  JetBrains_Mono,
-} from 'next/font/google';
+import { Rubik } from 'next/font/google';
 
-export const fontDisplay = Bricolage_Grotesque({
+export const fontDisplay = Rubik({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
-});
-
-export const fontSans = Instrument_Sans({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-});
-
-export const fontMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-  display: 'swap',
+  weight: '400',
 });

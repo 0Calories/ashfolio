@@ -14,12 +14,12 @@ export function PostCard({ post }: PostCardProps) {
 
   return (
     <motion.article
-      whileHover={{ y: -2 }}
+      whileHover={{ y: -4 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
       <Link
         href={`/blog/${slug}`}
-        className="flex flex-col gap-3 rounded-xl border border-border bg-card p-5 ring-1 ring-foreground/5 transition-shadow hover:shadow-md"
+        className="relative flex flex-col gap-3 rounded-xl border border-border bg-card p-5 ring-1 ring-foreground/5 transition-all hover:border-violet-500/30 hover:shadow-[0_0_24px_-6px_oklch(0.7_0.18_290_/_0.15)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-foreground/[0.06] before:to-transparent"
       >
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <time dateTime={frontmatter.date}>
@@ -43,7 +43,7 @@ export function PostCard({ post }: PostCardProps) {
             <Badge
               key={tag}
               variant="secondary"
-              className="font-mono text-[0.65rem]"
+              className="font-mono text-xs"
             >
               {tag}
             </Badge>

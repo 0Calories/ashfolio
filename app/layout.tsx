@@ -6,7 +6,7 @@ import { Starfield } from '@/components/effects/Starfield';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { siteConfig } from '@/data/site';
-import { fontDisplay, fontMono, fontSans } from '@/lib/fonts';
+import { fontDisplay } from '@/lib/fonts';
 import { jsonLdPerson, jsonLdWebsite } from '@/lib/metadata';
 import { cn } from '@/lib/utils';
 
@@ -45,10 +45,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={cn('dark', fontDisplay.variable, fontSans.variable, fontMono.variable)}
-    >
+    <html lang="en" className={cn('dark', fontDisplay.variable)}>
       <body>
         <script
           type="application/ld+json"

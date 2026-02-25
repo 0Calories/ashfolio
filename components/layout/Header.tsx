@@ -28,7 +28,7 @@ export function Header() {
           href="/"
           className="font-display text-lg font-bold tracking-tight"
         >
-          Ash
+          Ash Anand
         </Link>
 
         {/* Desktop nav */}
@@ -38,7 +38,7 @@ export function Header() {
               <Link
                 href={link.href}
                 className={cn(
-                  'relative rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-foreground',
+                  'relative rounded-md px-3 py-2 text-sm  transition-colors hover:text-foreground',
                   isActive(link.href)
                     ? 'text-foreground'
                     : 'text-muted-foreground',
@@ -75,7 +75,7 @@ export function Header() {
                     href={link.href}
                     onClick={() => setOpen(false)}
                     className={cn(
-                      'rounded-md px-3 py-2 text-lg font-medium transition-colors',
+                      'rounded-md px-3 py-2 text-lg  transition-colors',
                       isActive(link.href)
                         ? 'bg-accent text-foreground'
                         : 'text-muted-foreground hover:text-foreground',
