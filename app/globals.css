@@ -35,22 +35,22 @@
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  /* Named accent palette */
-  --color-ember-400: oklch(0.82 0.15 65);
-  --color-ember-500: oklch(0.75 0.18 55);
-  --color-ember-600: oklch(0.68 0.22 45);
+  /* Named accent palette — Cosmic Indigo */
+  --color-violet-400: oklch(0.78 0.16 290);
+  --color-violet-500: oklch(0.7 0.18 290);
+  --color-violet-600: oklch(0.6 0.2 290);
 
-  --color-gold-400: oklch(0.82 0.14 85);
-  --color-gold-500: oklch(0.75 0.18 75);
-  --color-gold-600: oklch(0.65 0.2 65);
+  --color-indigo-400: oklch(0.78 0.15 270);
+  --color-indigo-500: oklch(0.7 0.18 270);
+  --color-indigo-600: oklch(0.58 0.22 270);
 
-  --color-teal-400: oklch(0.75 0.12 185);
-  --color-teal-500: oklch(0.65 0.14 185);
-  --color-teal-600: oklch(0.55 0.14 185);
+  --color-cyan-400: oklch(0.82 0.12 200);
+  --color-cyan-500: oklch(0.75 0.14 200);
+  --color-cyan-600: oklch(0.65 0.14 200);
 
-  --color-rose-400: oklch(0.72 0.17 10);
-  --color-rose-500: oklch(0.65 0.2 0);
-  --color-rose-600: oklch(0.55 0.22 355);
+  --color-warm-400: oklch(0.85 0.1 80);
+  --color-warm-500: oklch(0.8 0.12 80);
+  --color-warm-600: oklch(0.7 0.14 80);
 
   /* Radius */
   --radius-sm: calc(var(--radius) - 4px);
@@ -62,59 +62,35 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-/* ─── Light mode ─── */
+/* ─── Theme ─── */
 :root {
   --radius: 0.625rem;
-  --background: oklch(0.97 0.008 80);
-  --foreground: oklch(0.15 0.025 260);
-  --card: oklch(0.995 0.003 80);
-  --card-foreground: oklch(0.15 0.025 260);
-  --popover: oklch(0.995 0.003 80);
-  --popover-foreground: oklch(0.15 0.025 260);
-  --primary: oklch(0.55 0.2 60);
-  --primary-foreground: oklch(0.98 0.005 80);
-  --secondary: oklch(0.93 0.008 80);
-  --secondary-foreground: oklch(0.2 0.025 260);
-  --muted: oklch(0.93 0.008 80);
-  --muted-foreground: oklch(0.5 0.02 260);
-  --accent: oklch(0.93 0.008 80);
-  --accent-foreground: oklch(0.2 0.025 260);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.9 0.01 80);
-  --input: oklch(0.9 0.01 80);
-  --ring: oklch(0.55 0.2 60);
-  --chart-1: oklch(0.55 0.2 60);
-  --chart-2: oklch(0.5 0.13 185);
-  --chart-3: oklch(0.55 0.22 355);
-  --chart-4: oklch(0.65 0.2 65);
-  --chart-5: oklch(0.6 0.18 75);
-}
-
-/* ─── Dark mode (default) ─── */
-.dark {
-  --background: oklch(0.14 0.02 260);
-  --foreground: oklch(0.95 0.005 250);
-  --card: oklch(0.19 0.025 260);
-  --card-foreground: oklch(0.95 0.005 250);
-  --popover: oklch(0.19 0.025 260);
-  --popover-foreground: oklch(0.95 0.005 250);
-  --primary: oklch(0.75 0.18 75);
-  --primary-foreground: oklch(0.14 0.02 260);
-  --secondary: oklch(0.24 0.03 260);
-  --secondary-foreground: oklch(0.95 0.005 250);
-  --muted: oklch(0.24 0.03 260);
-  --muted-foreground: oklch(0.65 0.02 260);
-  --accent: oklch(0.24 0.03 260);
-  --accent-foreground: oklch(0.95 0.005 250);
+  --sf-opacity: 1;
+  --sf-filter: none;
+  --specular-color: rgba(255, 255, 255, 0.08);
+  --background: oklch(0.13 0.015 280);
+  --foreground: oklch(0.93 0.005 280);
+  --card: oklch(0.17 0.02 280);
+  --card-foreground: oklch(0.93 0.005 280);
+  --popover: oklch(0.17 0.02 280);
+  --popover-foreground: oklch(0.93 0.005 280);
+  --primary: oklch(0.592 0.249 0.584);
+  --primary-foreground: oklch(0.98 0.005 0);
+  --secondary: oklch(0.22 0.025 280);
+  --secondary-foreground: oklch(0.93 0.005 280);
+  --muted: oklch(0.22 0.025 280);
+  --muted-foreground: oklch(0.6 0.02 280);
+  --accent: oklch(0.22 0.025 280);
+  --accent-foreground: oklch(0.93 0.005 280);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.75 0.18 75);
-  --chart-1: oklch(0.75 0.18 75);
-  --chart-2: oklch(0.65 0.14 185);
-  --chart-3: oklch(0.65 0.2 0);
-  --chart-4: oklch(0.82 0.15 65);
-  --chart-5: oklch(0.82 0.14 85);
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.592 0.249 0.584);
+  --chart-1: oklch(0.592 0.249 0.584);
+  --chart-2: oklch(0.75 0.14 200);
+  --chart-3: oklch(0.7 0.18 290);
+  --chart-4: oklch(0.8 0.12 80);
+  --chart-5: oklch(0.72 0.14 160);
 }
 
 @layer base {
@@ -146,6 +122,19 @@
     --tw-prose-hr: var(--border);
     --tw-prose-th-borders: var(--border);
     --tw-prose-td-borders: var(--border);
+  }
+}
+
+/* ─── Animated gradient border ─── */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-rotate {
+  to {
+    --border-angle: 360deg;
   }
 }
 

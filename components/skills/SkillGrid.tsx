@@ -34,10 +34,10 @@ export function SkillGrid() {
                   name={skill.name}
                   color={
                     categoryColors[category] as
-                      | 'gold'
-                      | 'teal'
-                      | 'ember'
-                      | 'rose'
+                      | 'indigo'
+                      | 'cyan'
+                      | 'violet'
+                      | 'warm'
                       | 'muted'
                   }
                   proficiency={skill.proficiency}

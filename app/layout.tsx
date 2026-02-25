@@ -2,9 +2,9 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import type { Metadata } from 'next';
 import './globals.css';
+import { Starfield } from '@/components/effects/Starfield';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
-import { ThemeProvider } from '@/components/theme-provider';
 import { siteConfig } from '@/data/site';
 import { fontDisplay, fontMono, fontSans } from '@/lib/fonts';
 import { jsonLdPerson, jsonLdWebsite } from '@/lib/metadata';
@@ -47,13 +47,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      suppressHydrationWarning
-      className={cn(fontDisplay.variable, fontSans.variable, fontMono.variable)}
+      className={cn('dark', fontDisplay.variable, fontSans.variable, fontMono.variable)}
     >
-      <body
-        className="flex min-h-dvh flex-col antialiased"
-        suppressHydrationWarning
-      >
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -63,18 +59,14 @@ export default function RootLayout({
         <a href="#main" className="skip-to-content">
           Skip to content
         </a>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <Starfield />
+        <div className="relative z-10 flex min-h-dvh flex-col">
           <Header />
           <main id="main" className="flex-1">
             {children}
           </main>
           <Footer />
-        </ThemeProvider>
+        </div>
         <SpeedInsights />
         <Analytics />
       </body>

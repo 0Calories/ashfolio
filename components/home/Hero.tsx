@@ -3,7 +3,6 @@
 import { ArrowRight, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
-import { EmberParticles } from '@/components/effects/EmberParticles';
 import { Button } from '@/components/ui/button';
 
 const container = {
@@ -21,37 +20,42 @@ const item = {
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[calc(100dvh-4rem)] items-center overflow-hidden pt-16">
-      <EmberParticles />
+    <section className="relative flex min-h-[calc(100dvh-4rem)] items-center pt-16">
       <div className="mx-auto w-full max-w-5xl px-6">
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="relative z-10 max-w-2xl"
+          className="relative z-10"
         >
           <motion.p
             variants={item}
             className="text-sm font-medium tracking-wide text-primary uppercase"
           >
-            Full-Stack Developer
+            Fullstack Software Engineer
           </motion.p>
 
           <motion.h1
             variants={item}
-            className="mt-4 text-5xl leading-[1.1] font-bold tracking-tight sm:text-6xl lg:text-7xl"
+            className="mt-4 max-w-3xl text-5xl leading-[1.1] font-bold tracking-tight sm:text-6xl lg:text-7xl"
           >
             Hi, I&apos;m <span className="text-primary">Ash</span>
           </motion.h1>
 
           <motion.p
             variants={item}
-            className="mt-6 max-w-lg text-lg text-muted-foreground"
+            className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground"
           >
-            I build polished, performant web experiences with React, Next.js,
-            and Node.js. Currently crafting{' '}
-            <span className="font-medium text-foreground">Hibana</span> — a
-            gamified habit tracker.
+            I build scalable web applications with a focus on peformance and
+            code quality. At{' '}
+            <span className="font-medium text-primary">Sentry</span>, I spent
+            over 3.5 years shipping features for an open-source SaaS loved and
+            used by over
+            <span className="font-medium text-primary"> 4M developers</span> and{' '}
+            <span className="font-medium text-primary">
+              100K+ organizations
+            </span>{' '}
+            worldwide.
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-wrap gap-4">

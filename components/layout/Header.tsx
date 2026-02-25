@@ -1,6 +1,6 @@
 'use client';
 
-import { Menu, X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -13,7 +13,6 @@ import {
 } from '@/components/ui/sheet';
 import { navLinks } from '@/data/navigation';
 import { cn } from '@/lib/utils';
-import { ThemeToggle } from './ThemeToggle';
 
 export function Header() {
   const pathname = usePathname();
@@ -55,7 +54,6 @@ export function Header() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
           {/* Mobile nav */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
